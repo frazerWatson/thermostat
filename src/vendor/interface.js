@@ -4,15 +4,15 @@ $(document).ready(function(){
   $('#temperature').text(thermostat.temperature);
   $('#increase_temperature').click(function(){
      thermostat.increaseTemperature();
-     $('#temperature').text(thermostat.temperature);
+     updateTemperature();
     });
   $('#decrease_temperature').click(function(){
       thermostat.decreaseTemperature();
-      $('#temperature').text(thermostat.temperature);
+      updateTemperature();
   });
   $('#temperature_reset').click(function(){
       thermostat.resetTemperature();
-      $('#temperature').text(thermostat.temperature);
+      updateTemperature();
   });
   $('#powersaving_on').click(function(){
       thermostat.switchPowerSavingModeOn();
@@ -20,5 +20,12 @@ $(document).ready(function(){
   $('#powersaving_off').click(function(){
       thermostat.switchPowerSavingModeOff();
   });
+
+
+
+  function updateTemperature() {
+    $('#temperature').text(thermostat.temperature);
+    $('#temperature').attr('class', thermostat.energyUsage());
+  }
 });
 
